@@ -5,6 +5,7 @@ import io.miguelsouza.hexagonal.adapters.in.controller.request.CustomerRequest;
 import io.miguelsouza.hexagonal.adapters.in.controller.response.CustomerResponse;
 import io.miguelsouza.hexagonal.application.ports.in.FindCustomerByIdInputPort;
 import io.miguelsouza.hexagonal.application.ports.in.InsertCustomerInputPort;
+import io.miguelsouza.hexagonal.application.ports.in.UpdateCustomerInputPort;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,9 @@ public class CostumerController {
     @Autowired
     private FindCustomerByIdInputPort findCustomerByIdInputPort;
 
+    @Autowired
+    private UpdateCustomerInputPort updateCustomerInputPort;
+
 
     @PostMapping
     public ResponseEntity<Void> insert(@Valid @RequestBody CustomerRequest customerRequest) {
@@ -36,5 +40,13 @@ public class CostumerController {
         var customer = findCustomerByIdInputPort.find(id);
         var customerResponse = customerMapper.toCustomerResponse(customer);
         return ResponseEntity.ok().body(customerResponse);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> update(@PathVariable final String id, @Valid @RequestBody CustomerRequest customerRequest) {
+        var customer = customerMapper.toCustomer(customerRequest);
+        customer.setId(id);
+        updateCustomerInputPort.update(customer, customerRequest.getZipCode());
+        return ResponseEntity.noContent().build();
     }
 }
