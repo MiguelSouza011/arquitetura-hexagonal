@@ -1,7 +1,6 @@
 package io.miguelsouza.hexagonal.adapters.out;
 
 import io.miguelsouza.hexagonal.adapters.out.repository.CustomerRepository;
-import io.miguelsouza.hexagonal.adapters.out.repository.entity.CustomerEntity;
 import io.miguelsouza.hexagonal.adapters.out.repository.mapper.CustomerEntityMapper;
 import io.miguelsouza.hexagonal.application.core.domain.Customer;
 import io.miguelsouza.hexagonal.application.ports.out.InsertCustomerOutputPort;
