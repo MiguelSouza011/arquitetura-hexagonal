@@ -3,9 +3,7 @@ package io.miguelsouza.hexagonal.application.core.usecase;
 import io.miguelsouza.hexagonal.application.core.domain.Customer;
 import io.miguelsouza.hexagonal.application.ports.in.FindCustomerByIdInputPort;
 import io.miguelsouza.hexagonal.application.ports.out.FindCustomerByIdOutputPort;
-import org.springframework.stereotype.Service;
 
-@Service
 public class FindCustomerByIdUseCase implements FindCustomerByIdInputPort {
 
     private final FindCustomerByIdOutputPort findCustomerByIdOutputPort;

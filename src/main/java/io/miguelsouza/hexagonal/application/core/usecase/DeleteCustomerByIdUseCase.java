@@ -3,9 +3,7 @@ package io.miguelsouza.hexagonal.application.core.usecase;
 import io.miguelsouza.hexagonal.application.ports.in.DeleteCustomerByIdInputPort;
 import io.miguelsouza.hexagonal.application.ports.in.FindCustomerByIdInputPort;
 import io.miguelsouza.hexagonal.application.ports.out.DeleteCustomerByIdOutputPort;
-import org.springframework.stereotype.Component;
 
-@Component
 public class DeleteCustomerByIdUseCase implements DeleteCustomerByIdInputPort {
 
     private final FindCustomerByIdInputPort findCustomerByIdInputPort;
